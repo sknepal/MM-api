@@ -13,9 +13,8 @@ class MetaMapConcepts(Resource):
         text = [text]
         response = []
         concepts, error = mm.extract_concepts(text)
-        print concepts
         for concept in concepts:
-            response.append({'score':concept.score, 'preferred_name':concept.preferred_name, 'semtypes':concept.semtypes, 'trigger':concept.trigger, 'pos_info':concept.pos_info})
+            response.append({'score':concept.score, 'preferred_name':concept.preferred_name, 'semtypes':concept.semtypes, 'trigger':concept.trigger, 'pos_info':concept.pos_info, 'negation':concept.trigger[-2]})
         return jsonify(concepts = response)
         
         
